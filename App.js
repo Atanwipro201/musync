@@ -1,23 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
+// File: App.js
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import Main from "./screens/main"
 
+import Welcome from "./components/welcome"
+import { NavigationContainer } from '@react-navigation/native';
+import MonkeyScreen from './screens/MonkeyScreen'
+import NakamasScreen from './screens/NakamasScreen'
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}> 
-      <StatusBar style="auto"/>
-      <Main/>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Welcome} />
+        <Stack.Screen name="Monkey" component={MonkeyScreen}/>
+        <Stack.Screen  name="Nakama" component={NakamasScreen}/>
+      </Stack.Navigator>
+  </NavigationContainer>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-});
+
 
